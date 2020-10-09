@@ -55,7 +55,7 @@ def load_data(directory):
 def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
-    directory = sys.argv[1] if len(sys.argv) == 2 else "large"
+    directory = sys.argv[1] if len(sys.argv) == 2 else "small"
 
     # Load data from files into memory
     print("Loading data...")
@@ -113,10 +113,10 @@ def shortest_path(source, target):
                 if child.state == target:
                     actions = []
                     cells = []
-                    while node.parent is not None:
-                        actions.append(node.action)
-                        cells.append(node.state)
-                        node = node.parent
+                    while child.parent is not None:
+                        actions.append(child.action)
+                        cells.append(child.state)
+                        child = child.parent
                     actions.reverse()
                     cells.reverse()
                     solution = []
@@ -125,6 +125,11 @@ def shortest_path(source, target):
                     return solution
                 else:
                     frontier.add(child)
+
+
+
+
+
 
 
 def person_id_for_name(name):
